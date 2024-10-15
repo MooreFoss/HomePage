@@ -8,9 +8,7 @@
         <i :class="languageIcon"></i>
       </button>
     </div>
-    <div class="homepage-container">
-      <HomePage />
-    </div>
+    <component :is="currentComponent" @navigate="navigate" />
     <footer>
       <p>{{ $t('footerText') }}</p>
     </footer>
@@ -19,15 +17,18 @@
 
 <script>
 import HomePage from './components/HomePage.vue'
+import AboutMe from './components/AboutMe.vue'
 import '@fortawesome/fontawesome-free/css/all.css'
 
 export default {
   components: {
-    HomePage
+    HomePage,
+    AboutMe
   },
   data() {
     return {
-      currentLanguage: this.$i18n.locale
+      currentLanguage: this.$i18n.locale,
+      currentComponent: 'HomePage'
     }
   },
   computed: {
@@ -39,6 +40,9 @@ export default {
     toggleLanguage() {
       this.currentLanguage = this.currentLanguage === 'en' ? 'zh-cn' : 'en'
       this.$i18n.locale = this.currentLanguage
+    },
+    navigate(component) {
+      this.currentComponent = component
     }
   }
 }
@@ -86,22 +90,6 @@ body {
   font-size: 24px;
 }
 
-.homepage-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 70vw;
-  /* 设置宽度为视口宽度的70% */
-  height: calc(70vw * 9 / 16);
-  /* 设置高度为宽度的16:9比例 */
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff;
-  /* 设置纯白色背景 */
-  margin-bottom: 20px;
-  /* 增加底部外边距 */
-}
-
 footer {
   position: relative;
   bottom: 0;
@@ -110,21 +98,4 @@ footer {
   text-align: center;
 }
 
-@media (max-width: 800px) {
-  .homepage-container {
-    width: 90vw;
-    /* 当视口宽度小于800px时，设置宽度为视口宽度的90% */
-    height: calc(90vw * 9 / 16);
-    /* 设置高度为宽度的16:9比例 */
-  }
-}
-
-@media (max-width: 450px) {
-  .homepage-container {
-    width: 100vw;
-    /* 当视口宽度小于450px时，设置宽度为视口宽度的100% */
-    height: calc(100vw * 9 / 16);
-    /* 设置高度为宽度的16:9比例 */
-  }
-}
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" :class="{ fadeOut: isFadingOut, shrink: isFadingOut }">
     <!-- 左侧青蛙图片 -->
     <div class="left">
       <h1>{{ $t('leftPlaceholder') }}</h1>
@@ -10,10 +10,10 @@
       <h1>{{ $t('siteTitle') }}</h1>
       <h2>{{ $t('subtitle') }}</h2>
       <div class="button-group">
-        <button class="btn">{{ $t('button1') }}</button>
-        <button class="btn">{{ $t('button2') }}</button>
-        <button class="btn">{{ $t('button3') }}</button>
-        <button class="btn">{{ $t('button4') }}</button>
+        <button class="btn" @click="rotateButton">{{ $t('button1') }}</button>
+        <button class="btn" @click="rotateButton">{{ $t('button2') }}</button>
+        <button class="btn" @click="rotateButton">{{ $t('button3') }}</button>
+        <button class="btn" @click="rotateButton">{{ $t('button4') }}</button>
       </div>
     </div>
   </div>
@@ -22,19 +22,59 @@
 <script>
 export default {
   name: 'HomePage',
+  data() {
+    return {
+      isFadingOut: false,
+      rotationSpeed: 100 // 初始旋转速度
+    }
+  },
+  methods: {
+    rotateButton(event) {
+      const button = event.target;
+      let rotation = 0;
+      const interval = setInterval(() => {
+        rotation += this.rotationSpeed;
+        button.style.transform = `rotateY(${rotation}deg)`;
+        this.rotationSpeed += 5; // 逐渐加快旋转速度
+        if (this.rotationSpeed > 130) {
+          clearInterval(interval);
+          setTimeout(() => {
+            this.isFadingOut = true;
+            setTimeout(() => {
+              this.$emit('navigate', 'AboutMe');
+            }, 1000); // 渐变消失时间
+          }, 150); // 延迟100ms再开始缩小和渐变
+        }
+      }, 1);
+    }
+  }
 }
 </script>
 
 <style scoped>
 .container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  height: 100%;
-  /* 确保容器高度为100% */
-  width: 100%;
-  /* 确保容器宽度为100% */
-  padding: 20px;
+  width: 70vw;
+  /* 设置宽度为视口宽度的70% */
+  height: calc(70vw * 9 / 16);
+  /* 设置高度为宽度的16:9比例 */
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  /* 设置纯白色背景 */
+  margin-bottom: 20px;
+  /* 增加底部外边距 */
+  transition: opacity 1s, transform 1s;
+}
+
+.container.fadeOut {
+  opacity: 0;
+}
+
+.container.shrink {
+  transform: scale(0.95);
 }
 
 .left {
@@ -86,6 +126,8 @@ h2 {
   position: relative;
   color: black;
   /* 默认文字颜色 */
+  transition: transform 1s;
+  /* 添加过渡效果 */
 }
 
 .btn:hover {
@@ -135,6 +177,22 @@ footer {
 
   .left {
     margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    width: 90vw;
+    /* 当视口宽度小于800px时，设置宽度为视口宽度的90% */
+    height: 100vh;
+  }
+}
+
+@media (max-width: 450px) {
+  .container {
+    width: 95vw;
+    /* 当视口宽度小于450px时，设置宽度为视口宽度的100% */
+    height: 100vh;
   }
 }
 </style>
