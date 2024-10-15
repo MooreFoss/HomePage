@@ -29,7 +29,7 @@ jobs:
     - run: npm ci
     - run: npm run build
     - name: Archive build results
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: HomePage
         path: |
