@@ -28,3 +28,9 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build
+    - name: Archive build results
+      uses: actions/upload-artifact@v2
+      with:
+        name: HomePage
+        path: |
+          dist
