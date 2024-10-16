@@ -1,18 +1,18 @@
 <template>
-    <div class="about-me">
-        <h1>{{ $t('page1') }}</h1>
-        <p>This is the About Me page.</p>
+    <div class="social-media">
+        <h1>{{ $t('page4') }}</h1>
+        <p>This is the Social Media page.</p>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'AboutMe'
+    name: 'SocialMedia'
 }
 </script>
 
 <style scoped>
-.about-me {
+.social-media {
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -2,10 +2,10 @@
   "languageSwitcher": "中文",
   "footerText": "© 2024 版权信息",
   "leftPlaceholder": "左侧占位符",
-  "siteTitle": "网站标题",
+  "siteTitle": "摩尔福斯的个人主页",
   "subtitle": "小标题",
-  "button1": "按钮 1",
-  "button2": "按钮 2",
-  "button3": "按钮 3",
-  "button4": "按钮 4"
+  "page1": "个人介绍",
+  "page2": "我的项目",
+  "page3": "网站导航",
+  "page4": "社交媒体"
 }

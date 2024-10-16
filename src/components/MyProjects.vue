@@ -1,18 +1,18 @@
 <template>
-    <div class="about-me">
-        <h1>{{ $t('page1') }}</h1>
-        <p>This is the About Me page.</p>
+    <div class="my-projects">
+        <h1>{{ $t('page2')}}</h1>
+        <p>This is the MyProjects page.</p>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'AboutMe'
+    name: 'MyProjects'
 }
 </script>
 
 <style scoped>
-.about-me {
+.my-projects {
     display: flex;
     flex-direction: column;
     justify-content: center;

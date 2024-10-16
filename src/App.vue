@@ -18,12 +18,18 @@
 <script>
 import HomePage from './components/HomePage.vue'
 import AboutMe from './components/AboutMe.vue'
+import MyProjects from './components/MyProjects.vue';
+import SiteMap from './components/SiteMap.vue';
+import SocialMedia from './components/SocialMedia.vue';
 import '@fortawesome/fontawesome-free/css/all.css'
 
 export default {
   components: {
     HomePage,
-    AboutMe
+    AboutMe,
+    MyProjects,
+    SiteMap,
+    SocialMedia
   },
   data() {
     return {
@@ -97,5 +103,4 @@ footer {
   width: 100%;
   text-align: center;
 }
-
 </style>

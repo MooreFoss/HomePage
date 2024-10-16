@@ -1,19 +1,17 @@
 <template>
   <div class="container" :class="{ fadeOut: isFadingOut, shrink: isFadingOut }">
-    <!-- 左侧青蛙图片 -->
     <div class="left">
       <h1>{{ $t('leftPlaceholder') }}</h1>
     </div>
 
-    <!-- 右侧按钮部分 -->
     <div class="right">
       <h1>{{ $t('siteTitle') }}</h1>
       <h2>{{ $t('subtitle') }}</h2>
       <div class="button-group">
-        <button class="btn" @click="rotateButton">{{ $t('button1') }}</button>
-        <button class="btn" @click="rotateButton">{{ $t('button2') }}</button>
-        <button class="btn" @click="rotateButton">{{ $t('button3') }}</button>
-        <button class="btn" @click="rotateButton">{{ $t('button4') }}</button>
+        <button class="btn" data-target="AboutMe" @click="rotateButton">{{ $t('page1') }}</button>
+        <button class="btn" data-target="MyProjects" @click="rotateButton">{{ $t('page2') }}</button>
+        <button class="btn" data-target="SiteMap" @click="rotateButton">{{ $t('page3') }}</button>
+        <button class="btn" data-target="SocialMedia" @click="rotateButton">{{ $t('page4') }}</button>
       </div>
     </div>
   </div>
@@ -25,25 +23,26 @@ export default {
   data() {
     return {
       isFadingOut: false,
-      rotationSpeed: 100 // 初始旋转速度
+      rotationSpeed: 100
     }
   },
   methods: {
     rotateButton(event) {
       const button = event.target;
+      const target = button.getAttribute('data-target');
       let rotation = 0;
       const interval = setInterval(() => {
         rotation += this.rotationSpeed;
         button.style.transform = `rotateY(${rotation}deg)`;
-        this.rotationSpeed += 5; // 逐渐加快旋转速度
+        this.rotationSpeed += 5;
         if (this.rotationSpeed > 130) {
           clearInterval(interval);
           setTimeout(() => {
             this.isFadingOut = true;
             setTimeout(() => {
-              this.$emit('navigate', 'AboutMe');
-            }, 1000); // 渐变消失时间
-          }, 150); // 延迟100ms再开始缩小和渐变
+              this.$emit('navigate', target);
+            }, 1000);
+          }, 150);
         }
       }, 1);
     }
@@ -57,15 +56,11 @@ export default {
   justify-content: center;
   align-items: center;
   width: 70vw;
-  /* 设置宽度为视口宽度的70% */
   height: calc(70vw * 9 / 16);
-  /* 设置高度为宽度的16:9比例 */
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
-  /* 设置纯白色背景 */
   margin-bottom: 20px;
-  /* 增加底部外边距 */
   transition: opacity 1s, transform 1s;
 }
 
@@ -89,7 +84,6 @@ export default {
   flex: 1;
   display: flex;
   flex-direction: column;
-  /* 使右侧内容由上至下分布 */
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -110,46 +104,36 @@ h2 {
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  /* 缩短按钮间距 */
   position: relative;
 }
 
 .btn {
   width: 200px;
-  /* 增加按钮宽度 */
   padding: 10px 20px;
   background-color: #fff;
-  /* 修改按钮背景颜色为白色 */
   border: 1px solid #ddd;
   border-radius: 15px;
   cursor: pointer;
   position: relative;
   color: black;
-  /* 默认文字颜色 */
   transition: transform 1s;
-  /* 添加过渡效果 */
 }
 
 .btn:hover {
   border-color: skyblue;
-  /* 修改边框颜色为天蓝色 */
   color: skyblue;
-  /* 修改文字颜色为天蓝色 */
 }
 
 .btn::after {
   content: '';
   position: absolute;
   width: 1px;
-  /* 使连线更细 */
   height: 20px;
-  /* 缩短按钮间距 */
   background-color: #ddd;
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
   pointer-events: none;
-  /* 确保伪元素不响应点击事件 */
 }
 
 .btn:last-child::after {
@@ -183,7 +167,6 @@ footer {
 @media (max-width: 800px) {
   .container {
     width: 90vw;
-    /* 当视口宽度小于800px时，设置宽度为视口宽度的90% */
     height: 100vh;
   }
 }
@@ -191,7 +174,6 @@ footer {
 @media (max-width: 450px) {
   .container {
     width: 95vw;
-    /* 当视口宽度小于450px时，设置宽度为视口宽度的100% */
     height: 100vh;
   }
 }

@@ -2,10 +2,10 @@
   "languageSwitcher": "English",
   "footerText": "© 2024 Copyright Information",
   "leftPlaceholder": "Left Placeholder",
-  "siteTitle": "Site Title",
+  "siteTitle": "MooreFoss's Home Page",
   "subtitle": "Subtitle",
-  "button1": "Button 1",
-  "button2": "Button 2",
-  "button3": "Button 3",
-  "button4": "Button 4"
+  "page1": "About Me",
+  "page2": "My Projects",
+  "page3": "Site Navigation",
+  "page4": "Social Media"
 }
