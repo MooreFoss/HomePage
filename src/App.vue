@@ -1,6 +1,9 @@
 <template>
   <div class="app-container">
     <div class="language-switcher">
+      <a href="/" class="home-icon">
+        <i class="fas fa-home"></i>
+      </a>
       <a href="https://github.com/MooreFoss/HomePage" target="_blank">
         <i class="fab fa-github"></i>
       </a>
@@ -8,33 +11,25 @@
         <i :class="languageIcon"></i>
       </button>
     </div>
-    <component :is="currentComponent" @navigate="navigate" />
+    <router-view v-slot="{ Component }">
+      <transition name="fade-up" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
     <footer>
-      <p>{{ $t('footerText') }}</p>
+      <transition name="fade-up2" mode="out-in">
+        <p>{{ $t('footerText') }}</p>
+      </transition>
     </footer>
   </div>
 </template>
 
 <script>
-import HomePage from './components/HomePage.vue'
-import AboutMe from './components/AboutMe.vue'
-import MyProjects from './components/MyProjects.vue';
-import SiteMap from './components/SiteMap.vue';
-import SocialMedia from './components/SocialMedia.vue';
 import '@fortawesome/fontawesome-free/css/all.css'
-
 export default {
-  components: {
-    HomePage,
-    AboutMe,
-    MyProjects,
-    SiteMap,
-    SocialMedia
-  },
   data() {
     return {
-      currentLanguage: this.$i18n.locale,
-      currentComponent: 'HomePage'
+      currentLanguage: this.$i18n.locale
     }
   },
   computed: {
@@ -46,9 +41,6 @@ export default {
     toggleLanguage() {
       this.currentLanguage = this.currentLanguage === 'en' ? 'zh-cn' : 'en'
       this.$i18n.locale = this.currentLanguage
-    },
-    navigate(component) {
-      this.currentComponent = component
     }
   }
 }
@@ -59,9 +51,7 @@ body {
   margin: 0;
   font-family: 'Arial, sans-serif';
   overflow: hidden;
-  /* 禁止滚动条 */
   background-color: #f0f0f0;
-  /* 设置灰色纯色背景 */
 }
 
 .app-container {
@@ -70,7 +60,6 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  /* 设置父容器高度为全屏 */
   margin: 0;
   position: relative;
 }
@@ -83,24 +72,55 @@ body {
   align-items: center;
 }
 
-.language-switcher a {
+.language-switcher a,
+.language-switcher button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-right: 10px;
   font-size: 24px;
   color: #000;
+  height: 40px;
+  /* 设置统一的高度 */
+  width: 40px;
+  /* 设置统一的宽度 */
 }
 
 .language-switcher button {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 24px;
+}
+
+.home-icon {
+  margin-right: 20px;
 }
 
 footer {
   position: relative;
   bottom: 0;
-  /* 距离底部0 */
   width: 100%;
   text-align: center;
+}
+
+.fade-up-enter-active,
+.fade-up-leave-active {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-up-enter-from,
+.fade-up-leave-to {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.fade-up2-enter-active,
+.fade-up2-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-up2-enter-from,
+.fade-up2-leave-to {
+  opacity: 0;
 }
 </style>

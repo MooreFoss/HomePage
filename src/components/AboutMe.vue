@@ -1,25 +1,112 @@
 <template>
-    <div class="about-me">
-        <h1>{{ $t('page1') }}</h1>
-        <p>This is the About Me page.</p>
+    <div class="container">
+        <transition name="sidebar-trans">
+            <div class="sidebar">
+                <ul>
+                    <li><a href="#" @click.prevent="scrollTo('section1')">Section 1</a></li>
+                    <li><a href="#" @click.prevent="scrollTo('section2')">Section 2</a></li>
+                    <li><a href="#" @click.prevent="scrollTo('section3')">Section 3</a></li>
+                </ul>
+            </div>
+        </transition>
+        <div class="about-me-container">
+            <div class="about-me">
+                <h1>{{ $t('page1') }}</h1>
+                <h2 ref="section1">This is Section 1.</h2>
+                <p>test</p>
+                <p ref="section2">This is Section 2.</p>
+                <p ref="section3">This is Section 3.</p>
+            </div>
+            <button class="close-button" @click="goToHomePage">✖</button>
+        </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'AboutMe'
+    name: 'AboutMe',
+    methods: {
+        scrollTo(section) {
+            this.$refs[section].scrollIntoView({ behavior: 'smooth' });
+        },
+        goToHomePage() {
+            this.$router.push('/');
+        }
+    }
 }
 </script>
 
 <style scoped>
+.container {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+}
+
+.sidebar {
+    width: 10vw;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-right: 1px solid #ddd;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    left: 5vw;
+    top: auto;
+    height: auto;
+    overflow-y: auto;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: skyblue;
+    color: #fff;
+}
+
+.about-me-container {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+}
+
 .about-me {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
+    align-items: flex-start;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60vw;
     background-color: #ffffff;
+    padding: 20px;
+    margin-left: 0vw;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: -40px;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
 }
 
 h1 {
@@ -27,7 +114,14 @@ h1 {
     margin-bottom: 20px;
 }
 
-p {
-    font-size: 1.2em;
+.sidebar-trans-enter-active,
+.sidebar-trans-leave-active {
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.sidebar-trans-enter,
+.sidebar-trans-leave-to {
+    transform: translateX(-100%);
+    opacity: 0;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="container" :class="{ fadeOut: isFadingOut, shrink: isFadingOut }">
+  <div class="container">
     <div class="left">
       <h1>{{ $t('leftPlaceholder') }}</h1>
     </div>
@@ -8,10 +8,10 @@
       <h1>{{ $t('siteTitle') }}</h1>
       <h2>{{ $t('subtitle') }}</h2>
       <div class="button-group">
-        <button class="btn" data-target="AboutMe" @click="rotateButton">{{ $t('page1') }}</button>
-        <button class="btn" data-target="MyProjects" @click="rotateButton">{{ $t('page2') }}</button>
-        <button class="btn" data-target="SiteMap" @click="rotateButton">{{ $t('page3') }}</button>
-        <button class="btn" data-target="SocialMedia" @click="rotateButton">{{ $t('page4') }}</button>
+        <button class="btn" data-target="/about" @click="navigate">{{ $t('page1') }}</button>
+        <button class="btn" data-target="/projects" @click="navigate">{{ $t('page2') }}</button>
+        <button class="btn" data-target="/sitemap" @click="navigate">{{ $t('page3') }}</button>
+        <button class="btn" data-target="/social" @click="navigate">{{ $t('page4') }}</button>
       </div>
     </div>
   </div>
@@ -27,7 +27,7 @@ export default {
     }
   },
   methods: {
-    rotateButton(event) {
+    navigate(event) {
       const button = event.target;
       const target = button.getAttribute('data-target');
       let rotation = 0;
@@ -39,10 +39,9 @@ export default {
           clearInterval(interval);
           setTimeout(() => {
             this.isFadingOut = true;
-            setTimeout(() => {
-              this.$emit('navigate', target);
-            }, 1000);
-          }, 150);
+            //this.$emit('navigate', target);
+            this.$router.push(target);
+          }, 100);
         }
       }, 1);
     }
@@ -61,15 +60,6 @@ export default {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
   margin-bottom: 20px;
-  transition: opacity 1s, transform 1s;
-}
-
-.container.fadeOut {
-  opacity: 0;
-}
-
-.container.shrink {
-  transform: scale(0.95);
 }
 
 .left {
@@ -164,7 +154,7 @@ footer {
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .container {
     width: 90vw;
     height: 100vh;
