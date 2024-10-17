@@ -16,11 +16,6 @@
         <component :is="Component" />
       </transition>
     </router-view>
-    <footer>
-      <transition name="fade-up2" mode="out-in">
-        <p>{{ $t('footerText') }}</p>
-      </transition>
-    </footer>
   </div>
 </template>
 

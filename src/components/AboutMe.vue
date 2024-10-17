@@ -1,14 +1,12 @@
 <template>
     <div class="container">
-        <transition name="sidebar-trans">
-            <div class="sidebar">
-                <ul>
-                    <li><a href="#" @click.prevent="scrollTo('section1')">Section 1</a></li>
-                    <li><a href="#" @click.prevent="scrollTo('section2')">Section 2</a></li>
-                    <li><a href="#" @click.prevent="scrollTo('section3')">Section 3</a></li>
-                </ul>
-            </div>
-        </transition>
+        <div class="sidebar">
+            <ul>
+                <li><a href="#" @click.prevent="scrollTo('section1')">Section 1</a></li>
+                <li><a href="#" @click.prevent="scrollTo('section2')">Section 2</a></li>
+                <li><a href="#" @click.prevent="scrollTo('section3')">Section 3</a></li>
+            </ul>
+        </div>
         <div class="about-me-container">
             <div class="about-me">
                 <h1>{{ $t('page1') }}</h1>
@@ -37,12 +35,6 @@ export default {
 </script>
 
 <style scoped>
-.container {
-    display: flex;
-    align-items: flex-start;
-    position: relative;
-}
-
 .sidebar {
     width: 10vw;
     padding: 20px;
@@ -112,16 +104,5 @@ export default {
 h1 {
     font-size: 2em;
     margin-bottom: 20px;
-}
-
-.sidebar-trans-enter-active,
-.sidebar-trans-leave-active {
-    transition: transform 0.5s ease, opacity 0.5s ease;
-}
-
-.sidebar-trans-enter,
-.sidebar-trans-leave-to {
-    transform: translateX(-100%);
-    opacity: 0;
 }
 </style>
