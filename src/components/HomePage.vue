@@ -8,10 +8,10 @@
       <h1>{{ $t('siteTitle') }}</h1>
       <h2>{{ $t('subtitle') }}</h2>
       <div class="button-group">
-        <button class="btn" data-target="/about" @click="navigate">{{ $t('page1') }}</button>
-        <button class="btn" data-target="/projects" @click="navigate">{{ $t('page2') }}</button>
-        <button class="btn" data-target="/sitemap" @click="navigate">{{ $t('page3') }}</button>
-        <button class="btn" data-target="/social" @click="navigate">{{ $t('page4') }}</button>
+        <button class="btn" data-target="/about" @click="navigate">{{ $t('page.1') }}</button>
+        <button class="btn" data-target="/projects" @click="navigate">{{ $t('page.2') }}</button>
+        <button class="btn" data-target="/sitemap" @click="navigate">{{ $t('page.3') }}</button>
+        <button class="btn" data-target="/social" @click="navigate">{{ $t('page.4') }}</button>
       </div>
     </div>
   </div>

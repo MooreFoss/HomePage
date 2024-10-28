@@ -4,8 +4,44 @@
   "leftPlaceholder": "Left Placeholder",
   "siteTitle": "MooreFoss's Home Page",
   "subtitle": "Subtitle",
-  "page1": "About Me",
-  "page2": "My Projects",
-  "page3": "Site Navigation",
-  "page4": "Social Media"
+  "page":{
+    "1":"About Me",
+    "2":"My Projects",
+    "3":"Site Navigation",
+    "4":"Social Media"
+  },
+
+  "section": {
+    "1": "Section 1",
+    "2": "Section 2",
+    "3": "Section 3",
+    "4": "Section 4"
+  },
+  "project": {
+    "1": {
+      "title": "Project 1",
+      "description": "This is a description of Project 1."
+    },
+    "2": {
+      "title": "Project 2",
+      "description": "This is a description of Project 2."
+    }
+  },
+
+  "socialMedia": {
+    "github": "GitHub",
+    "twitter": "Twitter",
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "youtube": "YouTube",
+    "twitch": "Twitch",
+    "reddit": "Reddit",
+    "discord": "Discord"
+  },
+
+  "site":{
+    "1":"site1",
+    "2":"site2",
+    "3":"site3"
+  }
 }

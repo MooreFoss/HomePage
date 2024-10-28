@@ -1,11 +1,11 @@
 <template>
     <div class="my-projects-container">
         <div class="my-projects">
-            <h1>{{ $t('page2') }}</h1>
-            <h2 ref="section1">This is Section 1.</h2>
-            <p>This is the MyProjects page.</p>
-            <p ref="section2">This is Section 2.</p>
-            <p ref="section3">This is Section 3.</p>
+            <h1>{{ $t('page.2') }}</h1>
+            <h2 ref="project1">{{ $t('project.1.title') }}</h2>
+            <p>{{ $t('project.1.description') }}</p>
+            <h2 ref="project2">{{ $t('project.2.title') }}</h2>
+            <p>{{ $t('project.2.description') }}</p>
         </div>
         <button class="close-button" @click="goToHomePage">✖</button>
     </div>

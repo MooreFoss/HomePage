@@ -1,8 +1,9 @@
 <template>
     <div class="social-media-container">
         <div class="social-media">
-            <h1>{{ $t('page4') }}</h1>
-            <p>This is the Social Media page.</p>
+            <h1>{{ $t('page.4') }}</h1>
+            <p>{{ $t('socialMedia.github') }}</p>
+            <p>{{ $t('socialMedia.twitter') }}</p>
         </div>
         <button class="close-button" @click="goToHomePage">✖</button>
     </div>

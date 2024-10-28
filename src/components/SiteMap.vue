@@ -1,8 +1,10 @@
 <template>
     <div class="site-map-container">
         <div class="site-map">
-            <h1>{{ $t('page3') }}</h1>
-            <p>This is the Site Map page.</p>
+            <h1>{{ $t('page.3') }}</h1>
+            <p>{{ $t('site.1') }}</p>
+            <p>{{ $t('site.2') }}</p>
+            <p>{{ $t('site.3') }}</p>
         </div>
         <button class="close-button" @click="goToHomePage">✖</button>
     </div>

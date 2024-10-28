@@ -2,18 +2,17 @@
     <div class="container">
         <div class="sidebar">
             <ul>
-                <li><a href="#" @click.prevent="scrollTo('section1')">Section 1</a></li>
-                <li><a href="#" @click.prevent="scrollTo('section2')">Section 2</a></li>
-                <li><a href="#" @click.prevent="scrollTo('section3')">Section 3</a></li>
+                <li><a href="#" @click.prevent="scrollTo('section1')">{{ $t('section.1') }}</a></li>
+                <li><a href="#" @click.prevent="scrollTo('section2')">{{ $t('section.2') }}</a></li>
+                <li><a href="#" @click.prevent="scrollTo('section3')">{{ $t('section.3') }}</a></li>
             </ul>
         </div>
         <div class="about-me-container">
             <div class="about-me">
-                <h1>{{ $t('page1') }}</h1>
-                <h2 ref="section1">This is Section 1.</h2>
-                <p>test</p>
-                <p ref="section2">This is Section 2.</p>
-                <p ref="section3">This is Section 3.</p>
+                <h1>{{ $t('page.1') }}</h1>
+                <h2 ref="section1">{{ $t('section.1') }}</h2>
+                <p ref="section2">{{ $t('section.2') }}</p>
+                <p ref="section3">{{ $t('section.3') }}</p>
             </div>
             <button class="close-button" @click="goToHomePage">✖</button>
         </div>
