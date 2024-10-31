@@ -2,17 +2,20 @@
     <div class="container">
         <div class="sidebar">
             <ul>
-                <li><a href="#" @click.prevent="scrollTo('section1')">{{ $t('section.1') }}</a></li>
-                <li><a href="#" @click.prevent="scrollTo('section2')">{{ $t('section.2') }}</a></li>
-                <li><a href="#" @click.prevent="scrollTo('section3')">{{ $t('section.3') }}</a></li>
+                <li><a href="#" @click.prevent="scrollTo('section1')">{{ $t('aboutme.section.1.title') }}</a></li>
+                <li><a href="#" @click.prevent="scrollTo('section2')">{{ $t('aboutme.section.2.title') }}</a></li>
+                <li><a href="#" @click.prevent="scrollTo('section3')">{{ $t('aboutme.section.3.title') }}</a></li>
             </ul>
         </div>
         <div class="about-me-container">
             <div class="about-me">
                 <h1>{{ $t('page.1') }}</h1>
-                <h2 ref="section1">{{ $t('section.1') }}</h2>
-                <p ref="section2">{{ $t('section.2') }}</p>
-                <p ref="section3">{{ $t('section.3') }}</p>
+                <h2 ref="section1">{{ $t('aboutme.section.1.title') }}</h2>
+                <p>{{ $t('aboutme.section.1.content') }}</p>
+                <h2 ref="section2">{{ $t('aboutme.section.2.title') }}</h2>
+                <p>{{ $t('aboutme.section.2.content') }}</p>
+                <h2 ref="section3">{{ $t('aboutme.section.3.title') }}</h2>
+                <p>{{ $t('aboutme.section.3.content') }}</p>
             </div>
             <button class="close-button" @click="goToHomePage">✖</button>
         </div>
@@ -22,10 +25,12 @@
 <script>
 export default {
     name: 'AboutMe',
+    data() {
+        return {
+            rotate: false
+        };
+    },
     methods: {
-        scrollTo(section) {
-            this.$refs[section].scrollIntoView({ behavior: 'smooth' });
-        },
         goToHomePage() {
             this.$router.push('/');
         }
@@ -34,17 +39,36 @@ export default {
 </script>
 
 <style scoped>
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
 .sidebar {
-    width: 10vw;
-    padding: 20px;
+    width: 8vw;
+    padding: 50px;
     background-color: #f4f4f4;
     border-right: 1px solid #ddd;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     position: fixed;
     left: 5vw;
-    top: auto;
+    top: 5vh;
     height: auto;
     overflow-y: auto;
+}
+
+/* 隐藏滚动条，但仍然允许滚动 */
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar {
+    -ms-overflow-style: none;
+    /* 适用于 IE 和 Edge */
+    scrollbar-width: none;
+    /* 适用于 Firefox */
 }
 
 .sidebar ul {
@@ -73,8 +97,23 @@ export default {
 
 .about-me-container {
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
     position: relative;
+    margin-left: 15vw;
+    width: 85vw;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.about-me-container::-webkit-scrollbar {
+    display: none;
+}
+
+.about-me-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .about-me {
@@ -84,20 +123,34 @@ export default {
     align-items: flex-start;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 60vw;
+    width: 80%;
     background-color: #ffffff;
     padding: 20px;
-    margin-left: 0vw;
+    position: relative;
 }
 
 .close-button {
-    position: absolute;
-    top: 10px;
-    right: -40px;
+    position: fixed;
+    top: 10vh;
+    right: 12vw;
     background: none;
-    border: none;
+    border: 2px solid transparent;
     font-size: 1.5em;
     cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: transform 1s, border-color 0.3s;
+}
+
+.close-button:hover {
+    border-color: skyblue;
 }
 
 h1 {

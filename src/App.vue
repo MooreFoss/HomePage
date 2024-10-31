@@ -47,6 +47,9 @@ body {
   font-family: 'Arial, sans-serif';
   overflow: hidden;
   background-color: #f0f0f0;
+  background-image: url('https://bing.img.run/rand.php');
+  background-size: cover;
+  background-position: center;
 }
 
 .app-container {
@@ -57,6 +60,7 @@ body {
   height: 100vh;
   margin: 0;
   position: relative;
+  opacity: 0.95;
 }
 
 .language-switcher {
@@ -65,6 +69,12 @@ body {
   right: 10px;
   display: flex;
   align-items: center;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  opacity: 0.8;
+  /* 调整透明度 */
 }
 
 .language-switcher a,
@@ -72,13 +82,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 10px;
+  margin-right: 0px;
   font-size: 24px;
   color: #000;
-  height: 40px;
-  /* 设置统一的高度 */
+  height: 20px;
   width: 40px;
-  /* 设置统一的宽度 */
+  mix-blend-mode: hard-light;
+  opacity: 0.9;
 }
 
 .language-switcher button {
@@ -118,4 +128,4 @@ footer {
 .fade-up2-leave-to {
   opacity: 0;
 }
-</style>
+</style>  

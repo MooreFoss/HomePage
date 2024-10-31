@@ -44,11 +44,25 @@ export default {
 .close-button {
     position: absolute;
     top: 10px;
-    right: -40px;
+    right: -60px;
     background: none;
-    border: none;
     font-size: 1.5em;
     cursor: pointer;
+    border: 2px solid transparent;  
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: transform 1s, border-color 0.3s;
+}
+
+.close-button:hover {
+    border-color: skyblue;
 }
 
 h1 {
