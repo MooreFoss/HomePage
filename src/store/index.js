@@ -16,7 +16,7 @@ export default createStore({
                 const response = await axios.get('https://api.botium.cn/github/users/MooreFoss/repos?per_page=100');
                 commit('setRepos', response.data);
             } catch (error) {
-                console.error('Error fetching repos:', error);
+                // console.error('Error fetching repos:', error);
             }
         }
     },
