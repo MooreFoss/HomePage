@@ -48,7 +48,7 @@ export default {
     background: none;
     font-size: 1.5em;
     cursor: pointer;
-    border: 2px solid transparent;  
+    border: 2px solid transparent;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -68,5 +68,22 @@ export default {
 h1 {
     font-size: 2em;
     margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+    .site-map-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .site-map {
+        width: 90vw;
+        margin-left: 0;
+    }
+
+    .close-button {
+        right: 10px;
+        top: 10px;
+    }
 }
 </style>

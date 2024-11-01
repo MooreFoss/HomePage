@@ -72,4 +72,21 @@ h1 {
 p {
     font-size: 1.2em;
 }
+
+@media (max-width: 600px) {
+    .social-media-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social-media {
+        width: 90vw;
+        margin-left: 0;
+    }
+
+    .close-button {
+        right: 10px;
+        top: 10px;
+    }
+}
 </style>

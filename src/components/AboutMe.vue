@@ -1,6 +1,7 @@
 <template>
     <div class="container">
-        <div class="sidebar">
+        <div class="sidebar" :class="{ open: isSidebarOpen }">
+            <button class="toggle-button" @click="toggleSidebar">☰</button>
             <ul>
                 <li><a href="#" @click.prevent="scrollTo('section1')">{{ $t('aboutme.section.1.title') }}</a></li>
                 <li><a href="#" @click.prevent="scrollTo('section2')">{{ $t('aboutme.section.2.title') }}</a></li>
@@ -11,7 +12,7 @@
             <div class="about-me">
                 <h1>{{ $t('page.1') }}</h1>
                 <h2 ref="section1">{{ $t('aboutme.section.1.title') }}</h2>
-                <p>{{ $t('aboutme.section.1.content') }}</p>
+                <p class="indented" v-html="formattedContent"></p>
                 <h2 ref="section2">{{ $t('aboutme.section.2.title') }}</h2>
                 <p>{{ $t('aboutme.section.2.content') }}</p>
                 <h2 ref="section3">{{ $t('aboutme.section.3.title') }}</h2>
@@ -27,12 +28,28 @@ export default {
     name: 'AboutMe',
     data() {
         return {
-            rotate: false
+            rotate: false,
+            isSidebarOpen: false
         };
     },
     methods: {
         goToHomePage() {
             this.$router.push('/');
+        },
+        scrollTo(section) {
+            const element = this.$refs[section];
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                this.isSidebarOpen = false; // 关闭侧边栏
+            }
+        },
+        toggleSidebar() {
+            this.isSidebarOpen = !this.isSidebarOpen;
+        }
+    },
+    computed: {
+        formattedContent() {
+            return this.$t('aboutme.section.1.content').replace(/\n/g, '<br>')
         }
     }
 }
@@ -47,16 +64,34 @@ export default {
 }
 
 .sidebar {
-    width: 8vw;
-    padding: 50px;
+    width: 7vw;
+    padding: 30px;
     background-color: #f4f4f4;
     border-right: 1px solid #ddd;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     position: fixed;
-    left: 5vw;
+    left: 4vw;
     top: 5vh;
     height: auto;
     overflow-y: auto;
+    border-radius: 15px;
+    transition: left 0.3s;
+    z-index: 1001; /* 确保侧边栏在前面 */
+}
+
+.sidebar.open {
+    left: 0; /* 显示侧边栏 */
+}
+
+.toggle-button {
+    position: absolute;
+    top: 10px;
+    right: -40px;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    z-index: 1002; /* 确保按钮在前面 */
 }
 
 /* 隐藏滚动条，但仍然允许滚动 */
@@ -104,7 +139,7 @@ export default {
     width: 85vw;
     height: 100vh;
     overflow-y: auto;
-    padding: 20px;
+    padding: 30px;
 }
 
 .about-me-container::-webkit-scrollbar {
@@ -125,7 +160,7 @@ export default {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 80%;
     background-color: #ffffff;
-    padding: 20px;
+    padding: 2em;
     position: relative;
 }
 
@@ -156,5 +191,47 @@ export default {
 h1 {
     font-size: 2em;
     margin-bottom: 20px;
+}
+
+.indented {
+    text-indent: 2em;
+    /* 设置首行缩进 */
+}
+
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 70vw;
+        position: fixed;
+        left: -65vw; /* 隐藏侧边栏 */
+        top: 0;
+        padding: 10px;
+        box-shadow: none;
+        border-radius: 0;
+        transition: left 0.3s;
+    }
+
+    .sidebar.open {
+        left: 0; /* 显示侧边栏 */
+    }
+
+    .about-me-container {
+        margin-left: 0;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .close-button {
+        right: 10px;
+        top: 50px;
+    }
+
+    .toggle-button {
+        top: 10px;
+        right: 10px;
+    }
 }
 </style>

@@ -36,7 +36,23 @@ export default {
     toggleLanguage() {
       this.currentLanguage = this.currentLanguage === 'en' ? 'zh-cn' : 'en'
       this.$i18n.locale = this.currentLanguage
+      this.updateTitle()
+    },
+    updateTitle() {
+      const baseTitle = this.currentLanguage === 'en' ? 'Home Page' : '主页'
+      document.title = `${baseTitle}`
     }
+  },
+  watch: {
+    currentLanguage() {
+      this.updateTitle()
+    }
+  },
+  mounted() {
+    this.updateTitle()
+    this.$router.afterEach((to) => {
+      this.updateTitle()
+    })
   }
 }
 </script>
@@ -74,6 +90,7 @@ body {
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   opacity: 0.8;
+  z-index: 2000; /* 确保按钮在最上层 */
   /* 调整透明度 */
 }
 
@@ -128,4 +145,23 @@ footer {
 .fade-up2-leave-to {
   opacity: 0;
 }
-</style>  
+
+@media (max-width: 600px) {
+  .app-container {
+    padding: 10px;
+  }
+
+  .language-switcher {
+    top: 5px;
+    right: 5px;
+    padding: 5px;
+  }
+
+  .language-switcher a,
+  .language-switcher button {
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+  }
+}
+</style>

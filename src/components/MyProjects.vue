@@ -135,4 +135,25 @@ h1 {
     font-size: 2em;
     margin-bottom: 20px;
 }
+
+@media (max-width: 600px) {
+    .my-projects-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .my-projects {
+        width: 90vw;
+        margin-left: 0;
+    }
+
+    .repo-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .close-button {
+        right: 10px;
+        top: 10px;
+    }
+}
 </style>

@@ -98,8 +98,10 @@ h2 {
 }
 
 .btn {
-  width: 200px;
-  padding: 10px 20px;
+  width: 250px;
+  /* 增加宽度 */
+  padding: 15px 25px;
+  /* 增加内边距 */
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 15px;
@@ -141,6 +143,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: auto;
   }
 
   .left,
@@ -151,6 +154,26 @@ footer {
 
   .left {
     margin-bottom: 20px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    /* 修改为竖排排列 */
+    gap: 10px;
+  }
+
+  .btn {
+    font-size: 1em;
+    /* 调整字体大小 */
+    width: 250px;
+    padding: 15px 25px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    cursor: pointer;
+    position: relative;
+    color: black;
+    transition: transform 1s;
   }
 }
 
