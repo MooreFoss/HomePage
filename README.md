@@ -4,6 +4,8 @@
 
 一个简单的个人主页，适配多语言、移动端。
 
+[Demo](https://www.botium.cn/)
+
 ## Project setup
 ```
 npm install

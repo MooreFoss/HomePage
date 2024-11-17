@@ -175,5 +175,9 @@ h1 {
         right: 10px;
         top: 10px;
     }
+
+    .qr-code-content img {
+        width: 60vw;
+    }
 }
 </style>
