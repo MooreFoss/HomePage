@@ -1,6 +1,5 @@
 {
   "languageSwitcher": "English",
-  "footerText": "© 2024 Copyright Information",
   "leftPlaceholder": "Left Placeholder",
   "siteTitle": "Home Page",
   "subtitle": "An ordinary college student's",
@@ -9,8 +8,7 @@
     "intro": "Love for technology, pursuit of innovation, and a passion for lifelong learning",
     "education": "Beijing University of Aeronautics and Astronautics\n& Beijing University of Technology joint education program.",
     "major": "Software Engineering",
-    "location": "Haidian, Beijing",
-    "email": "moorefoss@buaa.edu.cn"
+    "location": "Haidian, Beijing"
   },
   "page": {
     "1": "About Me",
@@ -33,26 +31,6 @@
         "content": "This is the content of Section 3."
       }
     }
-  },
-  "project": {
-    "1": {
-      "title": "Project 1",
-      "description": "This is a description of Project 1."
-    },
-    "2": {
-      "title": "Project 2",
-      "description": "This is a description of Project 2."
-    }
-  },
-  "socialMedia": {
-    "github": "GitHub",
-    "twitter": "Twitter",
-    "facebook": "Facebook",
-    "instagram": "Instagram",
-    "youtube": "YouTube",
-    "twitch": "Twitch",
-    "reddit": "Reddit",
-    "discord": "Discord"
   },
   "site": {
     "webHosting": "Web Hosting",

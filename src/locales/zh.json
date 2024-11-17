@@ -1,6 +1,5 @@
 {
   "languageSwitcher": "中文",
-  "footerText": "© 2024 版权信息",
   "leftPlaceholder": "左侧占位符",
   "siteTitle": "个人主页",
   "subtitle": "一个普通大学生的",
@@ -9,8 +8,7 @@
     "intro": "热爱技术，追求创新，永远保持学习的热情",
     "education": "北京航空航天大学&北京工业大学联合培养计划",
     "major": "软件工程",
-    "location": "北京市海淀区",
-    "email": "moorefoss@buaa.edu.cn"
+    "location": "北京市海淀区"
   },
   "page": {
     "1": "个人介绍",
@@ -33,16 +31,6 @@
         "content": "这是第三部分的内容。(没想好写什么，先留白吧)"
       }
     }
-  },
-  "socialMedia": {
-    "github": "GitHub",
-    "twitter": "Twitter",
-    "facebook": "Facebook",
-    "instagram": "Instagram",
-    "youtube": "YouTube",
-    "twitch": "Twitch",
-    "reddit": "Reddit",
-    "discord": "Discord"
   },
   "site": {
     "webHosting": "网站托管",
