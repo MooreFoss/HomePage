@@ -1,5 +1,9 @@
 # homepage
 
+## 介绍
+
+一个简单的个人主页，适配多语言、移动端。
+
 ## Project setup
 ```
 npm install

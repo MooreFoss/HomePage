@@ -12,11 +12,11 @@
             <div class="about-me">
                 <h1>{{ $t('page.1') }}</h1>
                 <h2 ref="section1">{{ $t('aboutme.section.1.title') }}</h2>
-                <p class="indented" v-html="formattedContent"></p>
+                <p class="indented" v-html="formattedContent1"></p>
                 <h2 ref="section2">{{ $t('aboutme.section.2.title') }}</h2>
-                <p>{{ $t('aboutme.section.2.content') }}</p>
+                <p class="indented" v-html="formattedContent2"></p>
                 <h2 ref="section3">{{ $t('aboutme.section.3.title') }}</h2>
-                <p>{{ $t('aboutme.section.3.content') }}</p>
+                <p class="indented" v-html="formattedContent3"></p>
             </div>
             <button class="close-button" @click="goToHomePage">✖</button>
         </div>
@@ -40,7 +40,7 @@ export default {
             const element = this.$refs[section];
             if (element) {
                 element.scrollIntoView({ behavior: 'smooth' });
-                this.isSidebarOpen = false; // 关闭侧边栏
+                this.isSidebarOpen = false;
             }
         },
         toggleSidebar() {
@@ -48,8 +48,14 @@ export default {
         }
     },
     computed: {
-        formattedContent() {
+        formattedContent1() {
             return this.$t('aboutme.section.1.content').replace(/\n/g, '<br>')
+        },
+        formattedContent2() {
+            return this.$t('aboutme.section.2.content').replace(/\n/g, '<br>')
+        },
+        formattedContent3() {
+            return this.$t('aboutme.section.3.content').replace(/\n/g, '<br>')
         }
     }
 }
@@ -76,11 +82,11 @@ export default {
     overflow-y: auto;
     border-radius: 15px;
     transition: left 0.3s;
-    z-index: 1001; /* 确保侧边栏在前面 */
+    z-index: 1001;
 }
 
 .sidebar.open {
-    left: 0; /* 显示侧边栏 */
+    left: 0;
 }
 
 .toggle-button {
@@ -91,19 +97,16 @@ export default {
     border: none;
     font-size: 1.5em;
     cursor: pointer;
-    z-index: 1002; /* 确保按钮在前面 */
+    z-index: 1002;
 }
 
-/* 隐藏滚动条，但仍然允许滚动 */
 .sidebar::-webkit-scrollbar {
     display: none;
 }
 
 .sidebar {
     -ms-overflow-style: none;
-    /* 适用于 IE 和 Edge */
     scrollbar-width: none;
-    /* 适用于 Firefox */
 }
 
 .sidebar ul {
@@ -137,9 +140,11 @@ export default {
     position: relative;
     margin-left: 15vw;
     width: 85vw;
-    height: 100vh;
+    max-height: 90vh;
     overflow-y: auto;
     padding: 30px;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
 }
 
 .about-me-container::-webkit-scrollbar {
@@ -195,7 +200,6 @@ h1 {
 
 .indented {
     text-indent: 2em;
-    /* 设置首行缩进 */
 }
 
 @media (max-width: 600px) {
@@ -206,7 +210,7 @@ h1 {
     .sidebar {
         width: 70vw;
         position: fixed;
-        left: -65vw; /* 隐藏侧边栏 */
+        left: -65vw;
         top: 0;
         padding: 10px;
         box-shadow: none;
@@ -215,7 +219,7 @@ h1 {
     }
 
     .sidebar.open {
-        left: 0; /* 显示侧边栏 */
+        left: 0;
     }
 
     .about-me-container {

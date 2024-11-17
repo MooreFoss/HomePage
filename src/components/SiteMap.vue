@@ -2,9 +2,26 @@
     <div class="site-map-container">
         <div class="site-map">
             <h1>{{ $t('page.3') }}</h1>
-            <p>{{ $t('site.1') }}</p>
-            <p>{{ $t('site.2') }}</p>
-            <p>{{ $t('site.3') }}</p>
+            <div class="external-links">
+                <div class="link-item">
+                    <a href="https://web.botium.cn" target="_blank" :title="$t('site.webHosting')">
+                        <img :src="require('@/assets/images/web.png')" :alt="$t('site.webHosting')">
+                    </a>
+                    <span>{{ $t('site.webHosting') }}</span>
+                </div>
+                <div class="link-item">
+                    <a href="https://pdf.botium.cn" target="_blank" :title="$t('site.pdfTool')">
+                        <img :src="require('@/assets/images/pdf.png')" :alt="$t('site.pdfTool')">
+                    </a>
+                    <span>{{ $t('site.pdfTool') }}</span>
+                </div>
+                <div class="link-item">
+                    <a href="https://status.botium.cn" target="_blank" :title="$t('site.serverStatus')">
+                        <img :src="require('@/assets/images/server.png')" :alt="$t('site.serverStatus')">
+                    </a>
+                    <span>{{ $t('site.serverStatus') }}</span>
+                </div>
+            </div>
         </div>
         <button class="close-button" @click="goToHomePage">✖</button>
     </div>
@@ -39,6 +56,39 @@ export default {
     background-color: #ffffff;
     padding: 20px;
     margin-left: 0vw;
+}
+
+.external-links {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.link-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-width: 100px;
+}
+
+.link-item span {
+    font-size: 14px;
+    color: #666;
+}
+
+.external-links img {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.external-links img:hover {
+    transform: scale(1.1);
 }
 
 .close-button {

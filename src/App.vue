@@ -50,7 +50,7 @@ export default {
   },
   mounted() {
     this.updateTitle()
-    this.$router.afterEach((to) => {
+    this.$router.afterEach(() => {
       this.updateTitle()
     })
   }
@@ -90,8 +90,7 @@ body {
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   opacity: 0.8;
-  z-index: 2000; /* 确保按钮在最上层 */
-  /* 调整透明度 */
+  z-index: 2000;
 }
 
 .language-switcher a,

@@ -1,7 +1,18 @@
 <template>
   <div class="container">
     <div class="left">
-      <h1>{{ $t('leftPlaceholder') }}</h1>
+      <div class="avatar">
+        <img :src="require('@/assets/images/avatar.jpg')" alt="profile avatar">
+      </div>
+      <h1 class="name">{{ $t('information.name') }}</h1>
+      <h2 class="nickname">@MooreFoss</h2>
+      <p class="bio">{{ $t('information.intro') }}</p>
+      <div class="info-group">
+        <p class="info"><i class="fas fa-graduation-cap"></i>{{ $t('information.education') }}</p>
+        <p class="info"><i class="fas fa-book"></i>{{ $t('information.major') }}</p>
+        <p class="info"><i class="fas fa-map-marker-alt"></i>{{ $t('information.location') }}</p>
+        <p class="info"><i class="fas fa-envelope"></i>{{ $t('information.email') }}</p>
+      </div>
     </div>
 
     <div class="right">
@@ -39,7 +50,6 @@ export default {
           clearInterval(interval);
           setTimeout(() => {
             this.isFadingOut = true;
-            //this.$emit('navigate', target);
             this.$router.push(target);
           }, 100);
         }
@@ -65,8 +75,76 @@ export default {
 .left {
   flex: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 20px;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 0 3px skyblue;
+  transition: box-shadow 0.3s ease;
+}
+
+.avatar:hover {
+  box-shadow: 0 0 0 4px skyblue, 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.name {
+  font-size: 2.2em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.nickname {
+  font-size: 1.6em;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.bio {
+  font-size: 1.1em;
+  line-height: 1.5;
+  color: #444;
+  margin-bottom: 25px;
+  padding: 0 20px;
+}
+
+.info-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.info {
+  font-size: 0.9em;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 5px 0;
+  width: 100%;
+  justify-content: flex-start;
+  white-space: pre-line;
+}
+
+.info i {
+  font-size: 1em;
+  color: #888;
+  width: 16px;
   text-align: center;
 }
 
@@ -79,16 +157,6 @@ export default {
   text-align: center;
 }
 
-h1 {
-  font-size: 2em;
-  margin-bottom: 10px;
-}
-
-h2 {
-  font-size: 1.5em;
-  margin-bottom: 20px;
-}
-
 .button-group {
   display: flex;
   flex-direction: column;
@@ -99,9 +167,7 @@ h2 {
 
 .btn {
   width: 250px;
-  /* 增加宽度 */
   padding: 15px 25px;
-  /* 增加内边距 */
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 15px;
@@ -132,62 +198,56 @@ h2 {
   display: none;
 }
 
-footer {
-  margin-top: 20px;
-  font-size: 0.8em;
-  color: #888;
+@media (max-width: 900px) {
+  .container {
+    width: 90vw;
+    height: auto;
+    flex-direction: column;
+    padding: 20px 0;
+  }
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 0 2px skyblue;
+  }
+
+  .avatar:hover {
+    box-shadow: 0 0 0 3px skyblue, 0 0 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .name {
+    font-size: 1.8em;
+  }
+
+  .nickname {
+    font-size: 1.4em;
+  }
 }
 
 @media (max-width: 600px) {
   .container {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: auto;
+    width: 95vw;
   }
 
   .left,
   .right {
     width: 100%;
-    text-align: center;
-  }
-
-  .left {
-    margin-bottom: 20px;
+    padding: 10px;
   }
 
   .button-group {
-    flex-direction: column;
-    /* 修改为竖排排列 */
     gap: 10px;
   }
 
   .btn {
-    font-size: 1em;
-    /* 调整字体大小 */
-    width: 250px;
-    padding: 15px 25px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    cursor: pointer;
-    position: relative;
-    color: black;
-    transition: transform 1s;
+    width: 200px;
+    padding: 12px 20px;
   }
-}
 
-@media (max-width: 900px) {
-  .container {
-    width: 90vw;
-    height: 100vh;
-  }
-}
-
-@media (max-width: 450px) {
-  .container {
-    width: 95vw;
-    height: 100vh;
+  .bio {
+    padding: 0 10px;
   }
 }
 </style>

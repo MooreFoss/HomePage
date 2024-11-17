@@ -4,14 +4,14 @@
             <h1>{{ $t('page.2') }}</h1>
             <div class="repo-grid">
                 <div v-for="(repo, index) in sortedRepos" :key="index" class="repo-box">
-                    <div class="repo-content">
-                        <h2><a :href="repo.html_url" target="_blank">{{ repo.name }}</a></h2>
+                    <a :href="repo.html_url" target="_blank" class="repo-content">
+                        <h2>{{ repo.name }}</h2>
                         <p>{{ repo.description }}</p>
                         <div class="repo-details">
                             <span>{{ repo.language }}</span>
                             <span class="stars">⭐ {{ repo.stargazers_count }}</span>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -76,16 +76,20 @@ export default {
     display: flex;
     flex-direction: column;
     height: 100%;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.repo-content:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-color: #0366d6;
 }
 
 .repo-box h2 {
     font-size: 1.2em;
     margin: 0;
-}
-
-.repo-box h2 a {
-    text-decoration: none;
-    color: #0366d6;
 }
 
 .repo-box p {
