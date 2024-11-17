@@ -11,7 +11,7 @@
         <p class="info"><i class="fas fa-graduation-cap"></i>{{ $t('information.education') }}</p>
         <p class="info"><i class="fas fa-book"></i>{{ $t('information.major') }}</p>
         <p class="info"><i class="fas fa-map-marker-alt"></i>{{ $t('information.location') }}</p>
-        <p class="info"><i class="fas fa-envelope"></i>{{ $t('information.email') }}</p>
+        <p class="info"><i class="fas fa-envelope"></i>moorefoss@buaa.edu.cn</p>
       </div>
     </div>
 
@@ -175,6 +175,7 @@ export default {
   position: relative;
   color: black;
   transition: transform 1s;
+  font-size: 1.1em;
 }
 
 .btn:hover {
@@ -244,10 +245,50 @@ export default {
   .btn {
     width: 200px;
     padding: 12px 20px;
+    font-size: 1em;
   }
 
   .bio {
     padding: 0 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    width: 100vw;
+    height: auto;
+    flex-direction: column;
+    padding: 10px 0;
+  }
+
+  .avatar {
+    width: 80px;
+    height: 80px;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 0 2px skyblue;
+  }
+
+  .avatar:hover {
+    box-shadow: 0 0 0 3px skyblue, 0 0 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .name {
+    font-size: 1.5em;
+  }
+
+  .nickname {
+    font-size: 1.2em;
+  }
+
+  .bio {
+    font-size: 1em;
+    padding: 0 5px;
+  }
+
+  .btn {
+    width: 180px;
+    padding: 10px 15px;
+    font-size: 0.9em;
   }
 }
 </style>
